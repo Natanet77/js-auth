@@ -7,11 +7,11 @@ const { User } = require('../class/user')
 // const { Confirm } = require('../class/confirm')
 // const { Session } = require('../class/session')
 
-// User.create({
-//   email: 'user@mail.com',
-//   password: 12311,
-//   role: 1,
-// })
+User.create({
+  email: 'test@mail.com',
+  password: 123,
+  role: 1,
+})
 
 // User.create({
 //   email: 'admin@mail.com',
@@ -68,41 +68,42 @@ router.get('/signup', function (req, res) {
   // ↑↑ сюди вводимо JSON дані
 })
 
-// router.post('/signup', function (req, res) {
-//   const { email, password, role } = req.body
+router.post('/signup', function (req, res) {
+  const { email, password, role } = req.body
 
-//   console.log(req.body)
+  console.log(req.body)
 
-//   if (!email || !password || !role) {
-//     return res.status(400).json({
-//       message: "Помилка. Обов'язкові поля відсутні",
-//     })
-//   }
+  if (!email || !password || !role) {
+    return res.status(400).json({
+      message: "Помилка. Обов'язкові поля відсутні",
+    })
+  }
 
-//   try {
-//     const user = User.getByEmail(email)
+  try {
+    User.create({ email, password, role })
+    //     const user = User.getByEmail(email)
 
-//     if (user) {
-//       return res.status(400).json({
-//         message: 'Помилка. Такий користувач вже існує',
-//       })
-//     }
+    //     if (user) {
+    //       return res.status(400).json({
+    //         message: 'Помилка. Такий користувач вже існує',
+    //       })
+    //     }
 
-//     const newUser = User.create({ email, password, role })
+    //     const newUser = User.create({ email, password, role })
 
-//     const session = Session.create(newUser)
-//     Confirm.create(newUser.email)
+    //     const session = Session.create(newUser)
+    //     Confirm.create(newUser.email)
 
-//     return res.status(200).json({
-//       message: 'Користувач успішно зареєстрований',
-//       session,
-//     })
-//   } catch (err) {
-//     return res.status(400).json({
-//       message: 'Помилка створення користувача',
-//     })
-//   }
-// })
+    return res.status(200).json({
+      message: 'Користувач успішно зареєстрований',
+      // session,
+    })
+  } catch (err) {
+    return res.status(400).json({
+      message: 'Помилка створення користувача',
+    })
+  }
+})
 
 // // ===============================================================
 
