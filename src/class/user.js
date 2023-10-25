@@ -46,8 +46,10 @@ class User {
 
   static getByEmail(email) {
     return (
-      this.#list.find((user) => user.email === email) ||
-      null
+      this.#list.find(
+        (user) =>
+          user.email === String(email).toLowerCase(),
+      ) || null
     )
   }
 
