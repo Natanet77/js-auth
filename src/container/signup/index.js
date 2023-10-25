@@ -1,7 +1,7 @@
 import {
   Form,
-  REC_EXP_EMAIL,
-  REC_EXP_PASSWORD,
+  REG_EXP_EMAIL,
+  REG_EXP_PASSWORD,
 } from '../../script/form'
 
 class SignupForm extends Form {
@@ -33,13 +33,13 @@ class SignupForm extends Form {
     }
 
     if (name === this.FIELD_NAME.EMAIL) {
-      if (!REC_EXP_EMAIL.test(String(value))) {
+      if (!REG_EXP_EMAIL.test(String(value))) {
         return this.FIELD_ERROR.EMAIL
       }
     }
 
     if (name === this.FIELD_NAME.PASSWORD) {
-      if (!REC_EXP_PASSWORD.test(String(value))) {
+      if (!REG_EXP_PASSWORD.test(String(value))) {
         return this.FIELD_ERROR.PASSWORD
       }
     }

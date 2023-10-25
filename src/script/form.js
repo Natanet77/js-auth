@@ -1,8 +1,8 @@
-export const REC_EXP_EMAIL = new RegExp(
+export const REG_EXP_EMAIL = new RegExp(
   /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/,
 )
 
-export const REC_EXP_PASSWORD = new RegExp(
+export const REG_EXP_PASSWORD = new RegExp(
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
 )
 
@@ -65,11 +65,11 @@ export class Form {
       }
     })
 
-    const el = document.querySelector('.button')
+    const el = document.querySelector(`.button`)
 
     if (el) {
       el.classList.toggle(
-        'buuton--disabled',
+        'button--disabled',
         Boolean(disabled),
       )
     }
