@@ -69,11 +69,11 @@ router.get('/logout', function (req, res) {
 const auth = require('./auth')
 
 // Підключіть інші файли роутів, якщо є
-// const user = require('./user')
+const user = require('./user')
 
 // Об'єднайте файли роутів за потреби
 router.use('/', auth)
-// router.use('/', user)
+router.use('/', user)
 
 // Використовуйте інші файли роутів, якщо є
 

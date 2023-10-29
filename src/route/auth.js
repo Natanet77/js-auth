@@ -10,22 +10,22 @@ const { Confirm } = require('../class/confirm')
 const { Session } = require('../class/session')
 
 User.create({
-  email: 'test@mail.com',
+  email: 'user@mail.com',
   password: 123,
   role: 1,
 })
 
-// User.create({
-//   email: 'admin@mail.com',
-//   password: 12322,
-//   role: 2,
-// })
+User.create({
+  email: 'admin@mail.com',
+  password: 12322,
+  role: 2,
+})
 
-// User.create({
-//   email: 'developer@mail.com',
-//   password: 12333,
-//   role: 3,
-// })
+User.create({
+  email: 'developer@mail.com',
+  password: 12333,
+  role: 3,
+})
 
 // ================================================================
 
@@ -89,7 +89,7 @@ router.post('/signup', function (req, res) {
         message: 'Помилка. Такий користувач вже існує',
       })
     }
-    // User.create({ email, password, role })
+
     const newUser = User.create({ email, password, role })
 
     const session = Session.create(newUser)
@@ -266,7 +266,7 @@ router.post('/signup-confirm', function (req, res) {
     })
   }
 
-  console.log(code, token)
+  // console.log(code, token)
   try {
     const session = Session.get(token)
 
@@ -290,8 +290,8 @@ router.post('/signup-confirm', function (req, res) {
       })
     }
 
-    // const user = User.getByEmail(session.user.email)
-    // user.isConfirm = true
+    const user = User.getByEmail(session.user.email)
+    user.isConfirm = true
     session.user.isConfirm = true
 
     return res.status(200).json({
